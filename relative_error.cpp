@@ -38,6 +38,30 @@ long double f2(long long x, const std::vector<bool> &vec) {
   return est;
 }
 
+long double g1(long long x, const std::vector<bool> &vec) {
+  long long count = 0;
+  for (long long i = 1; i <= x; i++) {
+    if (vec.at(i)) {
+      count++;
+    }
+  }
+  return count;
+}
+
+long double g2(long long x, const std::vector<bool> &vec) {
+  long long sqr = sqrtl(x);
+  long double est = x - 1;
+
+  for (long long i = 2; i <= sqr; i++) {
+    if (vec.at(i)) {
+      long double d = 1;
+      est *= 1 - d / i;
+    }
+  }
+
+  return est;
+}
+
 int main() {
   long long from = 100000000;
   long long to = from + 1000;
@@ -62,10 +86,18 @@ int main() {
     long double count = f1(i, vec);
     long double est = f2(i, vec);
 
+    long double count2 = g1(i, vec);
+    long double est2 = g2(i, vec);
+
     long double rel_err = count / est - 1;
+    long double rel_err2 = count2 / est2 - 1;
 
     rel_err *= 100;
+    rel_err2 *= 100;
 
-    std::cout << i << " " << rel_err << "%\n";
+    long double ratio = rel_err / rel_err2;
+
+    std::cout << i << " " << rel_err << "% " << rel_err2 << "% ratio=" << ratio
+              << "\n";
   }
 }
