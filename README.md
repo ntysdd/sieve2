@@ -159,3 +159,24 @@ $$\left(\prod_{p\le \sqrt{N}}{\left(1-\frac{1}{p}\right)}\right)N\approx\frac{2 
 
 比较这两个公式，可以预计，当$N$趋于正无穷时，上述公式的“相对误差”应该是$\frac{1}{2 e^{-\gamma}}-1 \approx 10.946 \%$
 
+即，随着$N$的增大，我们预计$A(N)=\pi(N)$与$B(N)=\left(\prod_{p\le\sqrt{N}}{1-\frac{1}{p}}\right)N$之间的相对误差将会趋近于“$\frac{A(N)}{B(N)}-1 \approx 10.94\%$”
+
+若上述“相对误差大约是2倍”的规律能够一直持续，则公式$\left(\prod_{p\le \sqrt{N}}(1-\frac{F(p, N)}{p})\right)N$的相对误差应该会趋近于约“$22\%$”
+
+### 哈代-李特尔伍德的公式和上述公式的比较
+
+哈代的公式为 $$ 2 \Pi_2 \left(\prod_{p \mid N; p \ge 3}{\frac{p-1}{p-2}}\right) \frac{N}{(\log N)^2}$$
+
+我们的公式为 $$ \left(\prod_{p\le\sqrt{N}}{1-\frac{F(p,N)}{p}}\right)N $$
+其中，$F(p, N)$定义为“如果$p\mid N$，则$F(p, N)=1$；否则，$F(p, N)=2$”
+
+它可以变形为 $$ {\frac{N}{2}}\prod_{3 \le p\le \sqrt N}{\left(1 - \frac{2}{p}\right)} \prod_{p \mid N; 3\le p\le \sqrt N}{\frac{p-1}{p-2}}$$
+
+当$N$很大的时候，$\prod_{3 \le p \le N}{\left(1-\frac{2}{p}\right)}$可以表示成$\frac{4 \Pi_2 e^{-2 \gamma}}{\left(\log N\right)^2}$
+
+上式变形为 $$ \frac{8 \Pi_2 e^{-2 \gamma} N}{\left(\log N\right)^2} \left(\prod_{p\mid N;3\le p\le \sqrt N }{\frac{p-1}{p-2}}\right) $$
+
+
+比较这两个公式，发现它们在一些地方很相似。如果我们暂时忽略“$N$的因子中大于$\sqrt N$的那一部分”，则这两个公式是成比例的，比例大约为“1比$4\ e^{-2 \gamma}$”，“相对误差”约为$\frac{1}{4\ e^{-2 \gamma}} - 1  \approx 20.69\%$。这与我们前面根据“相对误差大约是2倍”估算的“$22\%$”是很接近的。
+
+
